@@ -10,7 +10,7 @@ select
     order_id,
     customer_id,
     order_date,
-    amount
+    coalesce(amount, 0) as amount
 
 from {{ ref('stg_orders') }}
 left join order_payments using(order_id)
